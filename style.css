@@ -22,16 +22,20 @@
 
 .grid {
     border: 2px solid purple; 
+    background-color: white;
     box-shadow: 2px 5px;
     display: flex;
     width: 500px;
     height: 500px;
     flex-direction: column;
-  }
+}
   
-  .grid div {
-    background: white;
+.grid div {
     border: 0.5px solid black;
     flex: 1; 
     display: flex; 
-  }
+}
+
+.hover-block {
+    background-color: grey;
+}
