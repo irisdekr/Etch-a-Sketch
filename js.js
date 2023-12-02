@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     createRows(gridItemAmount)
     } 
 
+    //code for changing color of blocks when hovering. 
     const gridBlocks = document.querySelectorAll(".block");
 
     gridBlocks.forEach(block => { 
@@ -28,16 +29,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-        //code for button
-        document.querySelector('button').onclick = function() {popUp()};
+    //code for button
+    document.querySelector('button').onclick = function() {popUp()};
 
-        //need to change 'string', now you can't turn in numbers between 16 and 100.
-        function popUp() {
-            let askGridSize = prompt("Choose a new gridsize by typing a number between 16 and 100:", "");
-                if (askGridSize == null || typeof(askGridSize) == 'string' || askGridSize <= 16 || askGridSize >= 100) {
-                    alert("This size is not available.");
-                } else {
-                let gridItemAmount = askGridSize //how to make this reach let gridItemAmount?
-                }
-          }
+    function popUp() {
+        let askGridSize = prompt("Choose a new gridsize by typing a number between 16 and 100:");
+            if (askGridSize == null || isNaN(askGridSize) || askGridSize <= 15 || askGridSize >= 101) {//use isNaN instead of string
+                alert("This size is not available.");
+            } else {
+                gridItemAmount = Number(askGridSize);
+                recreateGrid();
+            }
+    }
+    
+    //code for creating a new grid in the chosen size. 
+    function recreateGrid() {
+        // Clear the existing grid
+        grid.innerHTML = "";
+        // Create a new grid with the updated size
+        const rowContainer = document.createElement('div');
+            for (let i = 0; i < gridItemAmount; i++) {
+                createRows(gridItemAmount)
+                    const block = document.createElement('div');
+                    block.classList.add("block")
+                    rowContainer.appendChild(block);
+            }
+        grid.appendChild(rowContainer)
+
+         //code for changing color of blocks when hovering on the new sized grid. 
+        const gridBlocks = document.querySelectorAll(".block");
+
+        gridBlocks.forEach(block => { 
+            block.addEventListener("mouseover", () => {
+                block.classList.add("hover-block");
+            });
+        });
+    }
+
 });
