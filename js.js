@@ -21,11 +21,22 @@ document.addEventListener('DOMContentLoaded', function() {
     } 
 
     //code for changing color of blocks when hovering. 
+
+    function generateRandomColor(){
+        let maxVal = 0xFFFFFF; 
+        let randomNumber = Math.random() * maxVal; 
+        randomNumber = Math.floor(randomNumber);
+        randomNumber = randomNumber.toString(16);
+        let randColor = randomNumber.padStart(6, 0);   
+        return `#${randColor.toUpperCase()}`
+    }
+
     const gridBlocks = document.querySelectorAll(".block");
 
     gridBlocks.forEach(block => { 
         block.addEventListener("mouseover", () => {
-            block.classList.add("hover-block");
+            //block.classList.add("hover-block"); use this code for grey blocks 
+            block.style.backgroundColor = generateRandomColor()
         });
     });
 
@@ -57,13 +68,22 @@ document.addEventListener('DOMContentLoaded', function() {
         grid.appendChild(rowContainer)
 
          //code for changing color of blocks when hovering on the new sized grid. 
+         function generateRandomColor(){
+            let maxVal = 0xFFFFFF; 
+            let randomNumber = Math.random() * maxVal; 
+            randomNumber = Math.floor(randomNumber);
+            randomNumber = randomNumber.toString(16);
+            let randColor = randomNumber.padStart(6, 0);   
+            return `#${randColor.toUpperCase()}`
+        }
+    
         const gridBlocks = document.querySelectorAll(".block");
-
+    
         gridBlocks.forEach(block => { 
             block.addEventListener("mouseover", () => {
-                block.classList.add("hover-block");
+                //block.classList.add("hover-block"); use this code for grey blocks. 
+                block.style.backgroundColor = generateRandomColor()
             });
         });
     }
-
 });
